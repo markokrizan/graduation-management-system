@@ -1,0 +1,47 @@
+version: '3.7'
+
+services:
+  # front-end:
+  #   build:
+  #     context: front-end-repo-url.git
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "80:80"
+
+  # app-server:
+  #   build:
+  #     context: .
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "8080:8080"
+  #   restart: always
+  #   depends_on: 
+  #     - db
+  #   environment: 
+  #     SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/graduation-management-system?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false&allowPublicKeyRetrieval=true
+  #     SPRING_DATASOURCE_USERNAME: root
+  #     SPRING_DATASOURCE_PASSWORD: root
+  #   volumes:
+  #      - ./src/main/java:/app/main/java
+  #      - ./src/main/resources:/app/main/resources
+  #   networks: 
+  #    - backend
+
+  db:
+    image: mysql:latest
+    ports:
+      - "3306:3306"
+    restart: always
+    environment:
+      MYSQL_DATABASE: graduation-management-system
+      MYSQL_ROOT_PASSWORD: root
+    volumes:
+      - db-data:/var/lib/mysql
+    networks:
+      - backend  
+  
+volumes:
+  db-data:
+
+networks:
+  backend:
