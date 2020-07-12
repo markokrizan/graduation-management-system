@@ -2,7 +2,7 @@ package rs.ac.uns.ftn.graduation.controller;
 
 import rs.ac.uns.ftn.graduation.exception.ResourceNotFoundException;
 import rs.ac.uns.ftn.graduation.model.User;
-import rs.ac.uns.ftn.graduation.payload.*;
+import rs.ac.uns.ftn.graduation.payload.response.UserIdentityAvailability;
 import rs.ac.uns.ftn.graduation.repository.UserRepository;
 import rs.ac.uns.ftn.graduation.security.UserPrincipal;
 import rs.ac.uns.ftn.graduation.security.CurrentUser;

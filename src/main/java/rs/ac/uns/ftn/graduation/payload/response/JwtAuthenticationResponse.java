@@ -1,4 +1,4 @@
-package rs.ac.uns.ftn.graduation.payload;
+package rs.ac.uns.ftn.graduation.payload.response;
 
 
 public class JwtAuthenticationResponse {
