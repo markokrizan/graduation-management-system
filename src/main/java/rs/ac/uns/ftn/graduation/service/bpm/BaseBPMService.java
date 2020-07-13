@@ -57,11 +57,19 @@ public class BaseBPMService {
         return taskService.createTaskQuery().processInstanceId(processInstanceId).taskId(taskId).singleResult();
     }
 
+    protected Task getFirstTask(String processInstanceId) {
+        return getProcessTasks(processInstanceId).get(0);
+    }
+
     protected Task getCurrentTask(String processInstanceId) {
-        Task currentTask = taskService.createTaskQuery().processInstanceId(processInstanceId).active().singleResult();
+        return taskService.createTaskQuery().processInstanceId(processInstanceId).active().singleResult();
+    }
+
+    protected Task getCurrentOrFirstTask(String processInstanceId) {
+        Task currentTask = getCurrentTask(processInstanceId);
 
         if (currentTask == null) {
-            return getProcessTasks(processInstanceId).get(0);
+            return getFirstTask(processInstanceId);
         }
 
         return currentTask;
@@ -71,7 +79,15 @@ public class BaseBPMService {
         return formService.getTaskFormData(taskId).getFormFields();
     }
 
+    protected Boolean taskHasFormFields(String taskId) {
+        return !getTaskFormFields(taskId).isEmpty();
+    }
+
     protected void submitTaskForm(String taskId, HashMap<String, Object> formFieldMap) {
+        if (formFieldMap.isEmpty() || !taskHasFormFields(taskId)) {
+            return;
+        }
+
         formService.submitTaskForm(taskId, formFieldMap);
     }
 

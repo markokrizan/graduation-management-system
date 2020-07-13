@@ -17,12 +17,12 @@
     <bpmn:userTask id="example-form" name="ExampleTask" camunda:formKey="example-form-key">
       <bpmn:extensionElements>
         <camunda:formData>
-          <camunda:formField id="first_name_field" label="first_name" type="string">
+          <camunda:formField id="first_name" label="First name" type="string">
             <camunda:validation>
               <camunda:constraint name="required" />
             </camunda:validation>
           </camunda:formField>
-          <camunda:formField id="last_name_field" label="last_name" type="string">
+          <camunda:formField id="last_name" label="Last name" type="string">
             <camunda:validation>
               <camunda:constraint name="required" />
             </camunda:validation>

@@ -18,6 +18,8 @@ public class TaskPayload {
 
     String processInstanceId;
 
+    Boolean isLast;
+
     public String getId() {
         return id;
     }
@@ -56,5 +58,13 @@ public class TaskPayload {
 
     public void setProcessInstanceId(String processInstanceId) {
         this.processInstanceId = processInstanceId;
+    }
+
+    public Boolean getIsLast() {
+        return isLast;
+    }
+
+    public void setIsLast(Boolean isLast) {
+        this.isLast = isLast;
     }
 }
